@@ -1,8 +1,10 @@
 "use client";
 
-import { useForm } from "react-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+
 import {
     Dialog,
     DialogContent,
@@ -21,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { FileUpload } from "@/components/file-upload";
 
 const formSchema = zod.object({
     name: zod.string().min(1, {
@@ -50,7 +52,7 @@ export const InitialModal = () => {
 
     const isLoading = form.formState.isSubmitting;
     const onSubmit = async (values: zod.infer<typeof formSchema>) => {
-        // console.log(values);
+        console.log(values);
     };
 
     if (!isMMounted) {
@@ -77,7 +79,22 @@ export const InitialModal = () => {
                     >
                         <div className="space-y-8 px-6">
                             <div className="flex items-center justify-center text-center">
-                                TODO: Image Upload
+                                <FormField
+                                    control={form.control}
+                                    name="imageUrl"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormControl>
+                                                {/* The endpoint "serverImage" must is in api/uploadthing/core  */}
+                                                <FileUpload
+                                                    endpoint="serverImage"
+                                                    value={field.value}
+                                                    onChange={field.onChange}
+                                                />
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
                             </div>
 
                             <FormField
@@ -87,6 +104,7 @@ export const InitialModal = () => {
                                     <FormItem>
                                         <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
                                             Server name
+                                            {}
                                         </FormLabel>
                                         <FormControl>
                                             <Input
