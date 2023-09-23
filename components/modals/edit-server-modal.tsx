@@ -42,7 +42,7 @@ export const EditServerModal = () => {
     const { isOpen, onClose, type, data } = useModal();
     const router = useRouter();
 
-    const isModalOpen = isOpen && type === "editServer";
+    const isModalOpen = isOpen && type === "EDIT-SERVER";
     const { server } = data;
 
     const form = useForm({

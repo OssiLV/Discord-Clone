@@ -21,7 +21,7 @@ export const InviteModal = () => {
     const { onOpen, isOpen, onClose, type, data } = useModal();
     const origin = useOrigin();
 
-    const isModalOpen = isOpen && type === "invite";
+    const isModalOpen = isOpen && type === "INVITE";
     const { server } = data;
 
     const [copied, setCopied] = useState(false);
@@ -45,7 +45,7 @@ export const InviteModal = () => {
                 `/api/servers/${server?.id}/invite-code`,
             );
 
-            onOpen("invite", { server: response.data });
+            onOpen("INVITE", { server: response.data });
         } catch (error) {
             console.log(error);
         } finally {
