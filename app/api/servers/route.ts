@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { MemberRole } from "@prisma/client";
 
+// Create server
 export async function POST(req: Request) {
     try {
         const { name, imageUrl } = await req.json();
@@ -24,7 +25,7 @@ export async function POST(req: Request) {
                     create: [{ name: "general", profileId: profile.id }],
                 },
                 members: {
-                    create: [{ profileId: profile.id, role: MemberRole.ADMIN }],
+                    create: [{ role: MemberRole.ADMIN, profileId: profile.id }],
                 },
             },
         });

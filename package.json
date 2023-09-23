@@ -6,6 +6,8 @@
         "prisma-generate-dev": "dotenv -e .env.local -- npx prisma generate",
         "prisma-push-dev": "dotenv -e .env.local -- npx prisma db push",
         "prisma-studio-dev": "dotenv -e .env.local -- npx prisma studio",
+        "prisma-migrate-reset-dev": "dotenv -e .env.local -- npx prisma migrate reset",
+        "prisma-reset-dev": "dotenv -e .env.local -- npm run prisma-migrate-reset-dev && npm run prisma-generate-dev && npm run prisma-push-dev && npm run prisma-studio-dev",
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
