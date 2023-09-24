@@ -6,13 +6,13 @@ import qs from "query-string";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useModal } from "@/hooks/use-modal-storage";
 import { ChannelType } from "@prisma/client";
 
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogFooter,
     DialogTitle,
@@ -34,8 +34,6 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import queryString from "query-string";
-import { useEffect } from "react";
 
 const formSchema = zod.object({
     name: zod
