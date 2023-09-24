@@ -98,7 +98,12 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
                                             className="cursor-pointer"
                                         >
                                             {icon}
-                                            <span>{name}</span>
+                                            <span>
+                                                {name.replace(
+                                                    new RegExp(" null", "g"),
+                                                    "",
+                                                )}
+                                            </span>
                                         </CommandItem>
                                     );
                                 })}
