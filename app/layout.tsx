@@ -2,10 +2,14 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
-import { ModalProvider } from "@/components/providers/modal-provider";
-import { SocketProvider } from "@/components/providers/socket-provider";
+
+import {
+    ModalProvider,
+    SocketProvider,
+    ThemeProvider,
+    QueryProvider,
+} from "@/components/providers";
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -33,7 +37,7 @@ export default function RootLayout({
                     >
                         <SocketProvider>
                             <ModalProvider />
-                            {children}
+                            <QueryProvider>{children}</QueryProvider>
                         </SocketProvider>
                     </ThemeProvider>
                 </body>
