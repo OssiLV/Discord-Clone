@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
+// Renew uuid for inviteCode server
 export async function PATCH(
     req: Request,
     { params }: { params: { serverId: string } },

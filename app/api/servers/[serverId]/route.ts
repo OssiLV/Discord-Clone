@@ -28,6 +28,7 @@ export async function DELETE(
     }
 }
 
+// Update server
 export async function PATCH(
     req: Request,
     { params }: { params: { serverId: string } },
